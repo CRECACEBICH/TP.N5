@@ -1,11 +1,18 @@
 #include "mbed.h"
 #include "MKL25Z4.h"
-#include "lcd_h"
-pantalla_lcd(0x27, 15, 4);
+#include "lcd.h"
+#include "delay.h"
 
-int main(){
- led.inicio();
- led.borrar();
- led.establecercursor(0, 0);
- led.imprimir("Hoy me levante con ganas de matar un par");
+void setup(){
+    lcd_inicio();
+    lcd_borrar();
+}
+
+void loop(){
+    lcd_comando(0x80);
+    lcd_imprimir("El peluca");
+    delay(1000);
+    lcd_comando(0xC0);
+    lcd_imprimir("SAAPE");
+    delay(1000);
 }
